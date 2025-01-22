@@ -12,7 +12,7 @@ class TaskManager:
             raise KeyError("Task not found")
         return self.tasks[task_id]
     
-    def mark_completed(self, task_id):
+    def mark_completed(self, task_id): #function
         if task_id not in self.tasks:
             raise KeyError("Task not found")
         self.tasks[task_id]["status"]=True
