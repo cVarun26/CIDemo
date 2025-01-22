@@ -1,5 +1,6 @@
 import unittest
 from task_manager import TaskManager
+import time
 
 class TestTaskManager(unittest.TestCase):
 
@@ -8,7 +9,7 @@ class TestTaskManager(unittest.TestCase):
         self.manager = TaskManager()
 
     #Unit tests
-    
+
     def test_add_task(self):
       
         self.manager.add_task(1, "Test Task")
@@ -47,6 +48,15 @@ class TestTaskManager(unittest.TestCase):
         self.manager.mark_completed(1)
         task = self.manager.get_task(1)
         self.assertTrue(task["completed"])
+
+     # Performance Test
+    def test_large_number_of_tasks(self):
+        start_time = time.time()
+        for i in range(1000):
+            self.manager.add_task(i, f"Task {i}")
+        end_time = time.time()
+        print(f"Time taken to add 1000 tasks: {end_time - start_time}s")
+        self.assertEqual(len(self.manager.tasks), 1000)
 
 if __name__ == '__main__':
     unittest.main()
