@@ -7,6 +7,8 @@ class TestTaskManager(unittest.TestCase):
     
         self.manager = TaskManager()
 
+    #Unit tests
+    
     def test_add_task(self):
       
         self.manager.add_task(1, "Test Task")
